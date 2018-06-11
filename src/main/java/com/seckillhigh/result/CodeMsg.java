@@ -19,6 +19,7 @@ public class CodeMsg {
     // Login Module Message
     public static CodeMsg PASSCODE_ERROR = new CodeMsg(500215, "password error");
     public static CodeMsg NO_USER_ERROR = new CodeMsg(500214, "no user exist");
+    public static CodeMsg NO_ITEM_ERROR = new CodeMsg(500213, "no item exist");
 
     // Item Module Message
 

@@ -1,4 +1,4 @@
-package com.seckillhigh.service.Impl.impl;
+package com.seckillhigh.service.Impl;
 
 import com.seckillhigh.dao.LegacyDao;
 import com.seckillhigh.entity.LegacyItems;

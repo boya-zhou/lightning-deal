@@ -37,7 +37,7 @@
      </tr>
      <tr>  
         <td>秒杀开始时间</td>  
-        <td th:text="${#dates.format(goods.startDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+        <td th:text="${#temporals.format(goods.startDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
         <td id="miaoshaTip">	
         	<input type="hidden" id="remainSeconds" th:value="${remainSeconds}" />
         	<span th:if="${miaoshaStatus eq 0}">秒杀倒计时：<span id="countDown" th:text="${remainSeconds}"></span>秒</span>

@@ -1,4 +1,4 @@
-package com.seckillhigh.service.Impl.impl;
+package com.seckillhigh.service.Impl;
 
 import com.seckillhigh.dao.SecKillHighUserDao;
 import com.seckillhigh.entity.SecKillHighUser;
@@ -17,7 +17,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
 @Service
-public class SecKillHighServiceImpl {
+public class SecKillHighService {
 
     public static final String COOKIE_NAME_TOKEN = "cookie_uuid";
 
@@ -48,7 +48,9 @@ public class SecKillHighServiceImpl {
 
     public boolean doLogin(HttpServletResponse response, LoginVo loginVo) {
 
-        SecKillHighUser secKillHighUser = secKillHighUserDao.queryUser(Long.valueOf(loginVo.getMobile()));
+        SecKillHighUser secKillHighUser;
+
+        secKillHighUser = secKillHighUserDao.queryUser(Long.valueOf(loginVo.getMobile()));
 
         if (secKillHighUser == null) {
             throw new GlobalException(CodeMsg.NO_USER_ERROR);
@@ -60,7 +62,7 @@ public class SecKillHighServiceImpl {
             throw new GlobalException(CodeMsg.PASSCODE_ERROR);
         }
 
-        String token = UUIDUtil.uuid();
+        String token = UUIDUtil.uuid().replace("-", "");
         addCookie(response, secKillHighUser, token);
 
         return true;
@@ -68,7 +70,7 @@ public class SecKillHighServiceImpl {
 
     private void addCookie(HttpServletResponse response, SecKillHighUser secKillHighUser, String token) {
 
-        redisDao.saveSingleEle(SeckillKeyPrefix.token, secKillHighUser.getPhoneId(), secKillHighUser);
+        redisDao.saveSingleEle(SeckillKeyPrefix.token, token, secKillHighUser);
 
         Cookie tokenCookie = new Cookie(COOKIE_NAME_TOKEN, token);
         tokenCookie.setMaxAge(SeckillKeyPrefix.EXPIRE_TOKEN);

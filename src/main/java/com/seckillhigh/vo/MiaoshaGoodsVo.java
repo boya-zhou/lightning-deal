@@ -4,19 +4,19 @@ import com.seckillhigh.entity.Goods;
 
 import java.time.LocalDateTime;
 
-public class GoodsVo extends Goods {
+public class MiaoshaGoodsVo extends Goods {
 
-    private double miaoshPrice;
+    private double miaoshaPrice;
     private int stockCount;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
 
-    public double getMiaoshPrice() {
-        return miaoshPrice;
+    public double getMiaoshaPrice() {
+        return miaoshaPrice;
     }
 
-    public void setMiaoshPrice(double miaoshPrice) {
-        this.miaoshPrice = miaoshPrice;
+    public void setMiaoshaPrice(double miaoshaPrice) {
+        this.miaoshaPrice = miaoshaPrice;
     }
 
     public int getStockCount() {

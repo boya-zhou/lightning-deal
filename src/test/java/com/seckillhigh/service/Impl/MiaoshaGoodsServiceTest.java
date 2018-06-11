@@ -1,4 +1,4 @@
-package com.seckillhigh.dao;
+package com.seckillhigh.service.Impl;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,15 +11,14 @@ import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest("MainApplication.class")
-public class GoodsDaoTest {
+public class MiaoshaGoodsServiceTest {
 
     @Autowired
-    GoodsDao goodsDao;
-
+    MiaoshaGoodsService miaoshaGoodsService;
 
     @Test
-    public void getMiaoshaGoods() {
-
+    public void getMiaoShaGoodsList() {
+        System.out.println(miaoshaGoodsService.getMiaoShaGoodsList());
 
     }
 }

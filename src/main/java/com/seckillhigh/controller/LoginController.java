@@ -3,7 +3,7 @@ package com.seckillhigh.controller;
 import com.seckillhigh.result.CodeMsg;
 import com.seckillhigh.result.Result;
 import com.seckillhigh.service.Impl.LegacyService;
-import com.seckillhigh.service.Impl.impl.SecKillHighServiceImpl;
+import com.seckillhigh.service.Impl.SecKillHighService;
 import com.seckillhigh.vo.LoginVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +28,7 @@ public class LoginController {
     LegacyService legacyService;
 
     @Autowired
-    SecKillHighServiceImpl secKillHighService;
+    SecKillHighService secKillHighService;
 
     @RequestMapping("/to_login")
     String home() {

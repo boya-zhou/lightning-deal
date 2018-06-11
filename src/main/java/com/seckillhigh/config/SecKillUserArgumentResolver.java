@@ -1,7 +1,8 @@
 package com.seckillhigh.config;
 
 import com.seckillhigh.entity.SecKillHighUser;
-import com.seckillhigh.service.Impl.impl.SecKillHighServiceImpl;
+import com.seckillhigh.redis.RedisDao;
+import com.seckillhigh.service.Impl.SecKillHighService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,10 @@ import javax.servlet.http.HttpServletResponse;
 public class SecKillUserArgumentResolver implements HandlerMethodArgumentResolver {
 
     @Autowired
-    SecKillHighServiceImpl secKillHighService;
+    SecKillHighService secKillHighService;
+
+    @Autowired
+    RedisDao redisDao;
 
     @Override
     public boolean supportsParameter(MethodParameter methodParameter) {
@@ -33,9 +37,9 @@ public class SecKillUserArgumentResolver implements HandlerMethodArgumentResolve
 
         HttpServletResponse response = nativeWebRequest.getNativeResponse(HttpServletResponse.class);
 
-        String paramToken = request.getParameter(SecKillHighServiceImpl.COOKIE_NAME_TOKEN);
+        String paramToken = request.getParameter(SecKillHighService.COOKIE_NAME_TOKEN);
 
-        String cookieToken = getCookie(request, SecKillHighServiceImpl.COOKIE_NAME_TOKEN);
+        String cookieToken = getCookie(request, SecKillHighService.COOKIE_NAME_TOKEN);
 
         if ((StringUtils.isEmpty(paramToken) && StringUtils.isEmpty(cookieToken))){
             return null;
@@ -53,7 +57,7 @@ public class SecKillUserArgumentResolver implements HandlerMethodArgumentResolve
         Cookie[] cookies = request.getCookies();
 
         for (Cookie cookie:cookies){
-            if (cookie.getName().equals(SecKillHighServiceImpl.COOKIE_NAME_TOKEN)){
+            if (cookie.getName().equals(SecKillHighService.COOKIE_NAME_TOKEN)){
                 return cookie.getValue();
             }
         }
