@@ -1,6 +1,7 @@
 package com.seckillhigh.entity;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 public class OrderInfo {
     private Long id;
@@ -12,8 +13,17 @@ public class OrderInfo {
     private Double goodsPrice;
     private Integer orderChannel;
     private Integer status;
-    private LocalDateTime createDate;
-    private LocalDateTime payDate;
+    private Date createDate;
+    private Date payDate;
+
+    public OrderInfo() {
+    }
+
+    public OrderInfo(Long id, Long userId, Long goodsId) {
+        this.id = id;
+        this.userId = userId;
+        this.goodsId = goodsId;
+    }
 
     public Long getId() {
         return id;
@@ -87,19 +97,37 @@ public class OrderInfo {
         this.status = status;
     }
 
-    public LocalDateTime getCreateDate() {
+    public Date getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(LocalDateTime createDate) {
+    public void setCreateDate(Date createDate) {
         this.createDate = createDate;
     }
 
-    public LocalDateTime getPayDate() {
+    public Date getPayDate() {
         return payDate;
     }
 
-    public void setPayDate(LocalDateTime payDate) {
+    public void setPayDate(Date payDate) {
         this.payDate = payDate;
+    }
+
+
+    @Override
+    public String toString() {
+        return "OrderInfo{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", goodsId=" + goodsId +
+                ", deliveryAddrId=" + deliveryAddrId +
+                ", goodsName='" + goodsName + '\'' +
+                ", goodsCount=" + goodsCount +
+                ", goodsPrice=" + goodsPrice +
+                ", orderChannel=" + orderChannel +
+                ", status=" + status +
+                ", createDate=" + createDate +
+                ", payDate=" + payDate +
+                '}';
     }
 }

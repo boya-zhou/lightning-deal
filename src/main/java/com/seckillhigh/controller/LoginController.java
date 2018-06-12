@@ -1,6 +1,6 @@
 package com.seckillhigh.controller;
 
-import com.seckillhigh.result.CodeMsg;
+import com.seckillhigh.entity.SecKillHighUser;
 import com.seckillhigh.result.Result;
 import com.seckillhigh.service.Impl.LegacyService;
 import com.seckillhigh.service.Impl.SecKillHighService;
@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
@@ -38,10 +39,12 @@ public class LoginController {
     @RequestMapping(value = "/do_login", consumes = "application/json")
     @ResponseBody
     Result<Boolean> doLogin(HttpServletResponse response,
-                            @Valid @RequestBody LoginVo loginVo) {
+                            HttpServletRequest request,
+                            @Valid @RequestBody LoginVo loginVo,
+                            SecKillHighUser secKillHighUser) {
 
-        Boolean res = secKillHighService.doLogin(response, loginVo);
-        return Result.success(CodeMsg.SUCCESS, res);
+        Boolean res = secKillHighService.doLogin(response, loginVo, request, secKillHighUser);
+        return Result.success(res);
 
     }
 

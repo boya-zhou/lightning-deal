@@ -17,7 +17,12 @@ public class MiaoshaGoodsService {
         return miaoshaGoodsDao.getMiaoshaGoods();
     }
 
-    public MiaoshaGoodsVo getMiaoShaGood(int id){
+    public MiaoshaGoodsVo getMiaoShaGood(long id){
         return miaoshaGoodsDao.getMiaoshaGood(id);
+    }
+
+    public int decurGoods(long goodsId) {
+        int res = miaoshaGoodsDao.decurStock(goodsId);
+        return res;
     }
 }

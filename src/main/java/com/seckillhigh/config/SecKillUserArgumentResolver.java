@@ -2,7 +2,9 @@ package com.seckillhigh.config;
 
 import com.seckillhigh.entity.SecKillHighUser;
 import com.seckillhigh.redis.RedisDao;
+import com.seckillhigh.redis.keyprefix.SeckillKeyPrefix;
 import com.seckillhigh.service.Impl.SecKillHighService;
+import com.seckillhigh.vo.LoginVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
 import org.springframework.stereotype.Service;
@@ -23,11 +25,13 @@ public class SecKillUserArgumentResolver implements HandlerMethodArgumentResolve
     SecKillHighService secKillHighService;
 
     @Autowired
-    RedisDao redisDao;
+    RedisDao<SecKillHighUser> redisDao;
 
     @Override
     public boolean supportsParameter(MethodParameter methodParameter) {
-        return SecKillHighUser.class == methodParameter.getParameterType();
+
+        // TODO: find methodparameter can match which parameter
+        return methodParameter.getParameterType().equals(SecKillHighUser.class);
     }
 
     @Override
@@ -41,11 +45,11 @@ public class SecKillUserArgumentResolver implements HandlerMethodArgumentResolve
 
         String cookieToken = getCookie(request, SecKillHighService.COOKIE_NAME_TOKEN);
 
-        if ((StringUtils.isEmpty(paramToken) && StringUtils.isEmpty(cookieToken))){
+        if ((StringUtils.isEmpty(paramToken) && StringUtils.isEmpty(cookieToken))) {
             return null;
         }
 
-        String token = StringUtils.isEmpty(cookieToken)? paramToken: cookieToken;
+        String token = StringUtils.isEmpty(cookieToken) ? paramToken : cookieToken;
 
         SecKillHighUser secKillHighUser = secKillHighService.getUserByToken(response, token);
 
@@ -56,8 +60,12 @@ public class SecKillUserArgumentResolver implements HandlerMethodArgumentResolve
 
         Cookie[] cookies = request.getCookies();
 
-        for (Cookie cookie:cookies){
-            if (cookie.getName().equals(SecKillHighService.COOKIE_NAME_TOKEN)){
+        if (cookies == null || cookies.length <= 0) {
+            return null;
+        }
+
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals(SecKillHighService.COOKIE_NAME_TOKEN)) {
                 return cookie.getValue();
             }
         }

@@ -1,13 +1,14 @@
 package com.seckillhigh.entity;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 public class MiaoshaGoods {
     private Long id;
     private Long goodsId;
     private Integer stockCount;
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
+    private Date startDate;
+    private Date endDate;
 
     public Long getId() {
         return id;
@@ -33,19 +34,19 @@ public class MiaoshaGoods {
         this.stockCount = stockCount;
     }
 
-    public LocalDateTime getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDateTime startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDateTime getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDateTime endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 }

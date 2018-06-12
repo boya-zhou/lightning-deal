@@ -25,6 +25,10 @@ public class CodeMsg {
 
     // Order Module Message
 
+    // Miaosha Moudle Message
+    public static CodeMsg OUT_OF_STOCK = new CodeMsg(500500, "out of stock");
+    public static CodeMsg REPEAT_KILL = new CodeMsg(500510, "repeat buy");
+
     public int getCode() {
         return code;
     }

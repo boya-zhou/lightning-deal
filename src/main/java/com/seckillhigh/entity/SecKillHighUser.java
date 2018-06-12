@@ -1,16 +1,24 @@
 package com.seckillhigh.entity;
 
-import java.time.LocalDateTime;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+import org.springframework.format.annotation.DateTimeFormat;
 
-public class SecKillHighUser {
+import java.io.Serializable;
+import java.util.Date;
+
+public class SecKillHighUser implements Serializable {
     private int id;
     private String phoneId;
     private String nickname;
     private String password;
     private String salt;
     private String head;
-    private LocalDateTime registerDate;
-    private LocalDateTime lastLoginDate;
+    private Date registerDate;
+    private Date lastLoginDate;
     private Integer loginCount;
 
     public int getId() {
@@ -37,16 +45,52 @@ public class SecKillHighUser {
         return head;
     }
 
-    public LocalDateTime getRegisterDate() {
+    public Date getRegisterDate() {
         return registerDate;
     }
 
-    public LocalDateTime getLastLoginDate() {
+    public Date getLastLoginDate() {
         return lastLoginDate;
     }
 
     public Integer getLoginCount() {
         return loginCount;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setPhoneId(String phoneId) {
+        this.phoneId = phoneId;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
+    public void setHead(String head) {
+        this.head = head;
+    }
+
+    public void setRegisterDate(Date registerDate) {
+        this.registerDate = registerDate;
+    }
+
+    public void setLastLoginDate(Date lastLoginDate) {
+        this.lastLoginDate = lastLoginDate;
+    }
+
+    public void setLoginCount(Integer loginCount) {
+        this.loginCount = loginCount;
     }
 
     @Override

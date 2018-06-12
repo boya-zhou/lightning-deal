@@ -34,8 +34,8 @@ public class Result<T> {
      * @param data
      * @return
      */
-    public static <T> Result<T> success(CodeMsg codeMsg, T data) {
-        return new Result<T>(codeMsg, data);
+    public static <T> Result<T> success(T data) {
+        return new Result<T>(CodeMsg.SUCCESS, data);
     }
 
     /**

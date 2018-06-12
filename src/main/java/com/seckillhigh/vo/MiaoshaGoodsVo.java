@@ -3,13 +3,14 @@ package com.seckillhigh.vo;
 import com.seckillhigh.entity.Goods;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 public class MiaoshaGoodsVo extends Goods {
 
     private double miaoshaPrice;
     private int stockCount;
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
+    private Date startDate;
+    private Date endDate;
 
     public double getMiaoshaPrice() {
         return miaoshaPrice;
@@ -27,19 +28,19 @@ public class MiaoshaGoodsVo extends Goods {
         this.stockCount = stockCount;
     }
 
-    public LocalDateTime getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDateTime startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDateTime getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDateTime endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 }

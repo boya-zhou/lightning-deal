@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS seckillhigh_user;
 CREATE TABLE seckillhigh_user
 (
   id INT AUTO_INCREMENT COMMENT 'primary id',
-  phone_id BIGINT NOT NULL COMMENT 'user phone id',
+  phone_id BIGINT COMMENT 'user phone id',
   nickname varchar(255) COMMENT 'user nick name',
   password varchar(32) COMMENT 'user password',
   salt varchar(40),
@@ -15,8 +15,7 @@ CREATE TABLE seckillhigh_user
   register_date datetime,
   last_login_date datetime,
   login_count INT,
-  PRIMARY KEY (id),
-  KEY idx_phone_id(phone_id)
+  PRIMARY KEY (id)
 )
   ENGINE = INNODB
   AUTO_INCREMENT = 100
@@ -106,7 +105,7 @@ CREATE TABLE `miaosha_goods` (
 
 LOCK TABLES `miaosha_goods` WRITE;
 /*!40000 ALTER TABLE `miaosha_goods` DISABLE KEYS */;
-INSERT INTO `miaosha_goods` VALUES (1,1,0.01,4,'2017-11-05 15:18:00','2017-11-13 14:00:18'),(2,2,0.01,9,'2017-11-12 14:00:14','2017-11-13 14:00:24');
+INSERT INTO `miaosha_goods` VALUES (1,1,0.01,8,'2018-06-05 15:18:00','2018-06-15 15:18:00'),(2,2,0.01,9,'2018-06-05 15:18:00','2018-06-15 15:18:00');
 /*!40000 ALTER TABLE `miaosha_goods` ENABLE KEYS */;
 UNLOCK TABLES;
 
