@@ -2,9 +2,9 @@ package com.seckillhigh.config;
 
 import com.seckillhigh.entity.SecKillHighUser;
 import com.seckillhigh.redis.RedisDao;
-import com.seckillhigh.redis.keyprefix.SeckillKeyPrefix;
 import com.seckillhigh.service.Impl.SecKillHighService;
-import com.seckillhigh.vo.LoginVo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
 import org.springframework.stereotype.Service;
@@ -26,6 +26,8 @@ public class SecKillUserArgumentResolver implements HandlerMethodArgumentResolve
 
     @Autowired
     RedisDao<SecKillHighUser> redisDao;
+
+    static Logger logger = LoggerFactory.getLogger(SecKillUserArgumentResolver.class);
 
     @Override
     public boolean supportsParameter(MethodParameter methodParameter) {
@@ -52,6 +54,10 @@ public class SecKillUserArgumentResolver implements HandlerMethodArgumentResolve
         String token = StringUtils.isEmpty(cookieToken) ? paramToken : cookieToken;
 
         SecKillHighUser secKillHighUser = secKillHighService.getUserByToken(response, token);
+
+        if (secKillHighUser == null){
+            logger.info(token);
+        }
 
         return secKillHighUser;
     }

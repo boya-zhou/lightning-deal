@@ -34,6 +34,7 @@ public class SecKillHighUserDaoTest {
 
         SecKillHighUser user = new SecKillHighUser();
         user.setSalt("1a2b3d4b");
+        user.setPhoneId("12345545679");
         user.setPassword(Md5.inputPassToDB("chimantou", user.getSalt()));
 
         secKillHighUserDao.insertUser(user);

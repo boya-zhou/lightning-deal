@@ -2,10 +2,11 @@ package com.seckillhigh.vo;
 
 import com.seckillhigh.entity.Goods;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Date;
 
-public class MiaoshaGoodsVo extends Goods {
+public class MiaoshaGoodsVo extends Goods implements Serializable {
 
     private double miaoshaPrice;
     private int stockCount;

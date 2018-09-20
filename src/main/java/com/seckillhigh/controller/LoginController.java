@@ -39,9 +39,9 @@ public class LoginController {
     @RequestMapping(value = "/do_login", consumes = "application/json")
     @ResponseBody
     Result<Boolean> doLogin(HttpServletResponse response,
-                            HttpServletRequest request,
-                            @Valid @RequestBody LoginVo loginVo,
-                            SecKillHighUser secKillHighUser) {
+                   HttpServletRequest request,
+                   @Valid @RequestBody LoginVo loginVo,
+                   SecKillHighUser secKillHighUser) {
 
         Boolean res = secKillHighService.doLogin(response, loginVo, request, secKillHighUser);
         return Result.success(res);

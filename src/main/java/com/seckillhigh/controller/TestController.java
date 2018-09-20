@@ -1,8 +1,8 @@
 package com.seckillhigh.controller;
 
-import com.seckillhigh.result.CodeMsg;
+import com.seckillhigh.rabbitmq.MsgSender;
 import com.seckillhigh.result.Result;
-import com.seckillhigh.service.Impl.LegacyService;
+import com.seckillhigh.utils.UserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
@@ -15,20 +15,34 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class TestController {
 
     @Autowired
-    LegacyService legacyService;
+    UserUtil userUtil;
+
+    @Autowired
+    MsgSender msgSender;
 
     @RequestMapping("/")
     @ResponseBody
     Result<String> home(){
-        return new Result<String>(CodeMsg.SUCCESS, legacyService.queryItemName(103));
+
+//        userUtil.insertAndCreateFakeConfig(5000);
+
+        return Result.success("success");
     }
+
+    @RequestMapping("/mq")
+    @ResponseBody
+    Result<String> mq(){
+
+        msgSender.send("hello boya");
+        return Result.success("success");
+    }
+
+
 
     @RequestMapping("/thymeleaf")
     String thymeleafTest(Model model){
         model.addAttribute("name", "boya");
         return "hello";
     }
-
-
 
 }

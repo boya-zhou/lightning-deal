@@ -49,8 +49,7 @@ public class SecKillHighService {
         return secKillHighUser;
     }
 
-    public boolean doLogin(HttpServletResponse response, LoginVo loginVo, HttpServletRequest request, SecKillHighUser secKillHighUser) {
-
+    public Boolean doLogin(HttpServletResponse response, LoginVo loginVo, HttpServletRequest request, SecKillHighUser secKillHighUser) {
 
         String cookieToken;
 
@@ -68,6 +67,9 @@ public class SecKillHighService {
         String finalPassWord = Md5.formPassToDB(loginVo.getPassword(), secKillHighUser.getSalt());
 
         if (!secKillHighUser.getPassword().equals(finalPassWord)) {
+
+            // TODO add code for another user login with not match cookie
+
             throw new GlobalException(CodeMsg.PASSCODE_ERROR);
         }
 

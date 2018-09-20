@@ -2,11 +2,11 @@ package com.seckillhigh.service.Impl;
 
 import com.seckillhigh.dao.OrderDao;
 import com.seckillhigh.entity.OrderInfo;
-import com.seckillhigh.entity.SecKillHighUser;
 import com.seckillhigh.vo.MiaoshaGoodsVo;
 import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -25,7 +25,8 @@ public class OrderService {
         return orderInfo;
     }
 
-    public int createOrder(long userId, long goodsId, SecKillHighUser secKillHighUser, MiaoshaGoodsVo miaoshaGoodsVo) {
+    @Transactional
+    public int createOrder(long userId, long goodsId, MiaoshaGoodsVo miaoshaGoodsVo) {
 
         OrderInfo orderInfo = new OrderInfo();
 

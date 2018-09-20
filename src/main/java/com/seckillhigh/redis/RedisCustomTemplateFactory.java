@@ -5,6 +5,8 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.config.BeanPostProcessor;
+
 
 @Component
 public class RedisCustomTemplateFactory<T> {
@@ -19,5 +21,6 @@ public class RedisCustomTemplateFactory<T> {
 
         return redisStringTemplate;
     }
+
 
 }

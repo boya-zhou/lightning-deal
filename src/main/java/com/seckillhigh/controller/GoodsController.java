@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
 import java.util.List;
 
 @Controller
@@ -20,8 +21,36 @@ public class GoodsController {
     @Autowired
     MiaoshaGoodsService miaoshaGoodsService;
 
+//    /**
+//     * The new controller with cache the webpage
+//     * @param model
+//     * @return
+//     */
+//    @RequestMapping(value = "/list", produces = "text/html")
+//    @ResponseBody
+//    public String getMisoshaGoodsList(Model model){
+//
+//        List<MiaoshaGoodsVo> miaoshaGoodsList = miaoshaGoodsService.getMiaoShaGoodsList();
+//
+//        model.addAttribute("goodsList", miaoshaGoodsList);
+//
+//        // find page cache in redis
+//        String html = miaoshaGoodsService.findPage(PageKeyPrefix.goodsList);
+//
+//        if (StringUtils.isEmpty(html)){
+//            return getMisoshaGoodsListView(model);
+//        }else{
+//            return html;
+//        }
+//    }
+
+    /**
+     * The origin controller function
+     * @param model
+     * @return
+     */
     @RequestMapping("/list")
-    public String getMisoshaGoodsList(Model model){
+    public String getMisoshaGoodsListView(Model model){
 
         List<MiaoshaGoodsVo> miaoshaGoodsList = miaoshaGoodsService.getMiaoShaGoodsList();
 

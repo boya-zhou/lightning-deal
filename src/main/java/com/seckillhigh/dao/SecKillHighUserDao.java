@@ -12,9 +12,9 @@ public interface SecKillHighUserDao {
     SecKillHighUser queryUser(@Param("phoneId") long phoneId);
 
     @Insert("insert into seckillhigh_user " +
-            "(id, password, salt)" +
+            "(id, phone_id, password, salt)" +
             "values" +
-            "(null, #{password}, #{salt})")
+            "(null, #{phoneId}, #{password}, #{salt})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
     int insertUser(SecKillHighUser secKillHighUser);
 

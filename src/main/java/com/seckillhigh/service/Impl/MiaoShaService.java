@@ -28,11 +28,9 @@ public class MiaoShaService {
 
         miaoshaGoodsService.decurGoods(goodsId);
 
-        int res = orderService.createOrder(userId, goodsId, secKillHighUser, miaoshaGoodsVo);
+        int res = orderService.createOrder(userId, goodsId, miaoshaGoodsVo);
 
         OrderInfo orderInfo = orderService.getOrderInfo(userId, goodsId);
-
-        System.out.println(orderInfo);
 
         int bool = miaoShaDAO.createOrder(userId, goodsId, orderInfo.getId());
 
